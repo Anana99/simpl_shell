@@ -9,6 +9,7 @@
 int _myexit(data_t *data)
 {
 	int exitcheck;
+
 	if (data->argv[1])  /* If there is an exit arguement */
 	{
 		exitcheck = _erratoi(data->argv[1]);
@@ -36,6 +37,7 @@ int _mycd(data_t *data)
 {
 	char *s, *dir, buffer[1024];
 	int chdir_ret;
+
 	s = getcwd(buffer, 1024);
 	if (!s)
 		_puts("TODO: >>getcwd failure emsg here<<\n");
@@ -83,6 +85,7 @@ int _mycd(data_t *data)
 int _myhelp(data_t *data)
 {
 	char **arg_array;
+
 	arg_array = data->argv;
 	_puts("help call works. Function not yet implemented \n");
 	if (0)

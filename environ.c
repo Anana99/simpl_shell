@@ -21,6 +21,7 @@ char *_getenv(data_t *data, const char *name)
 {
 	list_t *node = data->env;
 	char *p;
+
 	while (node)
 	{
 		p = starts_with(node->str, name);
@@ -57,6 +58,7 @@ int _mysetenv(data_t *data)
 int _myunsetenv(data_t *data)
 {
 	int i;
+
 	if (data->argc == 1)
 	{
 		_eputs("Too few arguements.\n");
@@ -76,6 +78,7 @@ int populate_env_list(data_t *data)
 {
 	list_t *node = NULL;
 	size_t i;
+
 	for (i = 0; environ[i]; i++)
 		add_node_end(&node, environ[i], 0);
 	data->env = node;

@@ -8,7 +8,9 @@
 char *get_history_file(data_t *data)
 {
 	char *buf, *dir;
+
 	dir = _getenv(data, "HOME=");
+
 	if (!dir)
 		return (NULL);
 	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) + 2));
@@ -31,6 +33,7 @@ int write_history(data_t *data)
 	ssize_t fd;
 	char *filename = get_history_file(data);
 	list_t *node = NULL;
+
 	if (!filename)
 		return (-1);
 	fd = open(filename, O_CREAT | O_TRUNC | O_RDWR, 0644);
@@ -58,6 +61,7 @@ int read_history(data_t *data)
 	ssize_t fd, rdlen, fsize = 0;
 	struct stat st;
 	char *buf = NULL, *filename = get_history_file(data);
+
 	if (!filename)
 		return (0);
 	fd = open(filename, O_RDONLY);
@@ -69,6 +73,7 @@ int read_history(data_t *data)
 	if (fsize < 2)
 		return (0);
 	buf = malloc(sizeof(char) * (fsize + 1));
+
 	if (!buf)
 		return (0);
 	rdlen = read(fd, buf, fsize);
@@ -103,6 +108,7 @@ int read_history(data_t *data)
 int build_history_list(data_t *data, char *buf, int linecount)
 {
 	list_t *node = NULL;
+
 	if (data->history)
 		node = data->history;
 	add_node_end(&node, buf, linecount);
@@ -120,6 +126,7 @@ int renumber_history(data_t *data)
 {
 	list_t *node = data->history;
 	int i = 0;
+
 	while (node)
 	{
 		node->num = i++;

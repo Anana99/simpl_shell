@@ -22,6 +22,7 @@ int unset_alias(data_t *data, char *str)
 {
 	char *p, c;
 	int ret;
+
 	p = _strchr(str, '=');
 	if (!p)
 		return (1);
@@ -42,7 +43,9 @@ int unset_alias(data_t *data, char *str)
 int set_alias(data_t *data, char *str)
 {
 	char *p;
+
 	p = _strchr(str, '=');
+
 	if (!p)
 		return (1);
 	if (!*++p)
@@ -59,6 +62,7 @@ int set_alias(data_t *data, char *str)
 int print_alias(list_t *node)
 {
 	char *p = NULL, *a = NULL;
+
 	if (node)
 	{
 		p = _strchr(node->str, '=');
@@ -82,6 +86,7 @@ int _myalias(data_t *data)
 	int i = 0;
 	char *p = NULL;
 	list_t *node = NULL;
+
 	if (data->argc == 1)
 	{
 		node = data->alias;

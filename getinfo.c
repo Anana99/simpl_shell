@@ -18,7 +18,9 @@ void clear_info(data_t *data)
 void set_info(data_t *data, char **av)
 {
 	int i = 0;
+
 	data->fname = av[0];
+
 	if (data->arg)
 	{
 		data->argv = strtow(data->arg, " \t");
